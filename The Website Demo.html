@@ -21,6 +21,29 @@
             font-weight: bold;
         }
 
+        #breaking-news {
+            background: red;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        #breaking-news span {
+            display: inline-block;
+            position: relative;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
         nav {
             text-align: center;
             background-color: #ffcc00;
@@ -33,10 +56,6 @@
             text-decoration: none;
             font-size: 1.4em;
             font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #ff5722;
         }
 
         .container {
@@ -59,40 +78,24 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        h1 {
-            font-size: 2.8em;
-            font-weight: bold;
-            text-align: center;
-            color: #e91e63;
-            margin-top: 5vh;
-        }
-
-        .article {
-            background-color: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .article h2 {
-            font-size: 2em;
-            color: #2196f3;
-        }
-
-        .article p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .article img {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .poll, .comments {
+        .comment-box {
             margin-top: 20px;
+        }
+
+        .poll button:disabled {
+            background-color: grey;
+        }
+
+        .leaderboard ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .leaderboard li {
+            padding: 5px;
+            background-color: white;
+            margin: 5px 0;
+            border-radius: 5px;
         }
 
         footer {
@@ -104,65 +107,100 @@
             position: relative;
             margin-top: 20px;
         }
+
+        .weather {
+            background-color: #e1f7d5;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .theme-button {
+            margin-top: 20px;
+        }
+
+        .theme-button input {
+            padding: 10px;
+        }
     </style>
+    <script>
+        function personalizeNews() {
+            let topics = document.querySelectorAll('input[name="news-topic"]:checked');
+            let selectedTopics = [];
+            topics.forEach(topic => selectedTopics.push(topic.value));
+            alert("Your news feed will show: " + selectedTopics.join(", "));
+        }
+
+        function showTime() {
+            let timeElement = document.getElementById("clock");
+            let now = new Date();
+            timeElement.innerHTML = now.toLocaleTimeString();
+        }
+        setInterval(showTime, 1000);
+
+        function vote(option) {
+            if (localStorage.getItem("hasVoted")) {
+                alert("You have already voted!");
+                return;
+            }
+            alert("You voted for: " + option);
+            localStorage.setItem("hasVoted", true);
+            document.getElementById("voteA").disabled = true;
+            document.getElementById("voteB").disabled = true;
+        }
+
+        function changeThemeColor() {
+            let color = document.getElementById("theme-color").value;
+            document.body.style.backgroundColor = color;
+        }
+
+        function displayWeather() {
+            const weatherContainer = document.querySelector('.weather');
+            const city = "New York";  // You can change this to get weather for other cities
+            weatherContainer.innerHTML = `Weather in ${city}: Sunny, 25°C`;
+        }
+
+        function startCountdown() {
+            const countdownDate = new Date("March 15, 2025 00:00:00").getTime();
+            let countdown = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = countdownDate - now;
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+                if (distance < 0) {
+                    clearInterval(countdown);
+                    document.getElementById("countdown").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+
+        function submitComment() {
+            const comment = document.getElementById("comment").value;
+            const username = document.getElementById("username").value;
+            if (comment && username) {
+                alert(`Thank you for your comment, ${username}!`);
+            } else {
+                alert("Please fill in both fields.");
+            }
+        }
+    </script>
 </head>
 <body>
-
 <header>
     Kid News Daily 📰
+    <div id="clock"></div>
 </header>
+
+<div id="breaking-news">
+    <span>🚨 Breaking News: A new dinosaur species discovered! | 🚀 A kid's experiment sent to space! | 🏆 Young athlete wins gold medal!</span>
+</div>
 
 <nav>
     <a href="#">Home</a>
     <a href="#">Fun Facts</a>
-    <a href="#">Science</a>
-    <a href="#">Sports</a>
-    <a href="#">Good News</a>
-</nav>
-
-<div class="container">
-    <div class="content">
-        <h1>Exciting News Just for Kids!</h1>
-
-        <div class="article">
-            <h2>🌍 A New Dinosaur Discovered!</h2>
-            <img src="https://via.placeholder.com/800x400" alt="Dinosaur Discovery">
-            <p>Scientists have found fossils of a never-before-seen dinosaur species! This amazing creature had colorful feathers and lived millions of years ago.</p>
-        </div>
-
-        <div class="article">
-            <h2>🚀 Kid Sends Experiment to Space!</h2>
-            <img src="https://via.placeholder.com/800x400" alt="Space Experiment">
-            <p>A young scientist created a cool experiment that is now floating on the International Space Station! NASA says kids' ideas can help future space missions.</p>
-        </div>
-    </div>
-
-    <div class="sidebar">
-        <h3>🌟 Fun Fact!</h3>
-        <p>Did you know? Honey never spoils! Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly good to eat.</p>
-        
-        <div class="poll">
-            <h3>📊 Poll: What's Your Favorite Topic?</h3>
-            <form>
-                <input type="radio" name="topic" value="dinosaurs"> Dinosaurs 🦖<br>
-                <input type="radio" name="topic" value="space"> Space 🚀<br>
-                <input type="radio" name="topic" value="sports"> Sports ⚽<br>
-                <input type="radio" name="topic" value="fun facts"> Fun Facts 💡<br>
-                <button type="submit">Vote!</button>
-            </form>
-        </div>
-
-        <div class="comments">
-            <h3>💬 Leave a Comment!</h3>
-            <textarea rows="4" cols="30" placeholder="What do you think?"></textarea>
-            <button type="submit">Submit</button>
-        </div>
-    </div>
-</div>
-
-<footer>
-    🏆 Kid News Daily - Bringing Fun & Facts Every Day! 🏆
-</footer>
-
-</body>
-</html>
