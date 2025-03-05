@@ -39,10 +39,24 @@
             color: #ff5722;
         }
 
-        .content {
-            padding: 20px;
-            max-width: 900px;
+        .container {
+            display: flex;
+            max-width: 1100px;
             margin: auto;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 3;
+            padding-right: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #fff8b3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
@@ -77,6 +91,10 @@
             margin-top: 10px;
         }
 
+        .poll, .comments {
+            margin-top: 20px;
+        }
+
         footer {
             background-color: #ff9800;
             color: white;
@@ -102,16 +120,43 @@
     <a href="#">Good News</a>
 </nav>
 
-<div class="content">
-    <h1>Exciting News Just for Kids!</h1>
-    <div class="article">
-        <h2>🌍 A New Dinosaur Discovered!</h2>
-        <p>Scientists have found fossils of a never-before-seen dinosaur species! This amazing creature had colorful feathers and lived millions of years ago.</p>
+<div class="container">
+    <div class="content">
+        <h1>Exciting News Just for Kids!</h1>
+
+        <div class="article">
+            <h2>🌍 A New Dinosaur Discovered!</h2>
+            <img src="https://via.placeholder.com/800x400" alt="Dinosaur Discovery">
+            <p>Scientists have found fossils of a never-before-seen dinosaur species! This amazing creature had colorful feathers and lived millions of years ago.</p>
+        </div>
+
+        <div class="article">
+            <h2>🚀 Kid Sends Experiment to Space!</h2>
+            <img src="https://via.placeholder.com/800x400" alt="Space Experiment">
+            <p>A young scientist created a cool experiment that is now floating on the International Space Station! NASA says kids' ideas can help future space missions.</p>
+        </div>
     </div>
 
-    <div class="article">
-        <h2>🚀 Kid Sends Experiment to Space!</h2>
-        <p>A young scientist created a cool experiment that is now floating on the International Space Station! NASA says kids' ideas can help future space missions.</p>
+    <div class="sidebar">
+        <h3>🌟 Fun Fact!</h3>
+        <p>Did you know? Honey never spoils! Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly good to eat.</p>
+        
+        <div class="poll">
+            <h3>📊 Poll: What's Your Favorite Topic?</h3>
+            <form>
+                <input type="radio" name="topic" value="dinosaurs"> Dinosaurs 🦖<br>
+                <input type="radio" name="topic" value="space"> Space 🚀<br>
+                <input type="radio" name="topic" value="sports"> Sports ⚽<br>
+                <input type="radio" name="topic" value="fun facts"> Fun Facts 💡<br>
+                <button type="submit">Vote!</button>
+            </form>
+        </div>
+
+        <div class="comments">
+            <h3>💬 Leave a Comment!</h3>
+            <textarea rows="4" cols="30" placeholder="What do you think?"></textarea>
+            <button type="submit">Submit</button>
+        </div>
     </div>
 </div>
 
