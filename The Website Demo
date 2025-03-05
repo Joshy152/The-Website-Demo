@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Website</title>
+    <title>Kid News</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            background-color: #fffbcc;
             margin: 0;
             padding: 0;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            background-color: #ff9800;
+            color: white;
+            padding: 20px;
             text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
         }
 
         nav {
             text-align: center;
-            background-color: #444;
+            background-color: #ffcc00;
             padding: 10px 0;
         }
 
         nav a {
-            color: #fff;
-            margin: 0 20px;
+            color: #333;
+            margin: 0 15px;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.4em;
+            font-weight: bold;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #ff5722;
         }
 
         .content {
@@ -43,27 +46,24 @@
         }
 
         h1 {
-            font-size: 3em;
-            font-weight: 400;
+            font-size: 2.8em;
+            font-weight: bold;
             text-align: center;
+            color: #e91e63;
             margin-top: 5vh;
-            line-height: 1.2;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .article {
-            background-color: #fff;
+            background-color: white;
             padding: 20px;
             margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .article h2 {
             font-size: 2em;
-            margin-bottom: 10px;
+            color: #2196f3;
         }
 
         .article p {
@@ -71,48 +71,55 @@
             line-height: 1.6;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
+        .article img {
             width: 100%;
-            bottom: 0;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2em;
+            position: relative;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>News Today</h1>
+    Kid News Daily 📰
 </header>
 
 <nav>
     <a href="#">Home</a>
-    <a href="#">World</a>
-    <a href="#">Politics</a>
+    <a href="#">Fun Facts</a>
+    <a href="#">Science</a>
     <a href="#">Sports</a>
-    <a href="#">Entertainment</a>
+    <a href="#">Good News</a>
 </nav>
 
 <div class="content">
-    <h1>Breaking News: Major Event Happens</h1>
+    <h1>Exciting News Just for Kids!</h1>
 
     <div class="article">
-        <h2>Megan Markles Bold Comeback: Stirring Up New Adventures in 2025</h2>
-        <p>Meghan Markle is making a big return in 2025 with a new TV show that shares fun and practical ideas for everyday living. In the show, she teaches easy recipes that make cooking fun, shows simple gardening tips to help you create your own little green space, and shares creative ways to host memorable family get-togethers.</p>
-        <p>Along with the show, Meghan is launching her new lifestyle brand, American Riviera Orchard. This brand offers clever advice on DIY projects and fresh ideas to brighten up daily routines. Working with her team, Meghan hopes to inspire everyone to explore new ideas and add a splash of creativity to home life. Get ready for a year full of exciting, practical inspiration in 2025 with Meghan Markle leading the way!</p>
+        <h2>🌍 A New Dinosaur Discovered!</h2>
+        <img src="https://via.placeholder.com/800x400" alt="Dinosaur Discovery">
+        <p>Scientists have found fossils of a never-before-seen dinosaur species! This amazing creature had colorful feathers and lived millions of years ago.</p>
     </div>
 
     <div class="article">
-        <h2>Another Headline</h2>
-        <p>This is a second article block with its own content. The layout can be expanded to show multiple articles, images, or even advertisements depending on the design requirements.</p>
+        <h2>🚀 Kid Sends Experiment to Space!</h2>
+        <img src="https://via.placeholder.com/800x400" alt="Space Experiment">
+        <p>A young scientist created a cool experiment that is now floating on the International Space Station! NASA says kids' ideas can help future space missions.</p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2025 News Today. All Rights Reserved.</p>
+    🏆 Kid News Daily - Bringing Fun & Facts Every Day! 🏆
 </footer>
 
 </body>
