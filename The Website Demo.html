@@ -108,20 +108,25 @@
             margin-top: 20px;
         }
 
-        .weather {
-            background-color: #e1f7d5;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 8px;
+        /* Additional Styles */
+        .clock {
+            font-size: 1.2em;
+            margin-top: 10px;
         }
 
-        .theme-button {
-            margin-top: 20px;
+        .poll button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 10px 0;
         }
 
-        .theme-button input {
-            padding: 10px;
+        .poll button:disabled {
+            background-color: #ccc;
         }
+
     </style>
     <script>
         function personalizeNews() {
@@ -149,44 +154,13 @@
             document.getElementById("voteB").disabled = true;
         }
 
-        function changeThemeColor() {
-            let color = document.getElementById("theme-color").value;
-            document.body.style.backgroundColor = color;
-        }
-
-        function displayWeather() {
-            const weatherContainer = document.querySelector('.weather');
-            const city = "New York";  // You can change this to get weather for other cities
-            weatherContainer.innerHTML = `Weather in ${city}: Sunny, 25°C`;
-        }
-
-        function startCountdown() {
-            const countdownDate = new Date("March 15, 2025 00:00:00").getTime();
-            let countdown = setInterval(function() {
-                let now = new Date().getTime();
-                let distance = countdownDate - now;
-
-                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-                if (distance < 0) {
-                    clearInterval(countdown);
-                    document.getElementById("countdown").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-        }
-
-        function submitComment() {
-            const comment = document.getElementById("comment").value;
+        function postComment() {
             const username = document.getElementById("username").value;
-            if (comment && username) {
-                alert(`Thank you for your comment, ${username}!`);
+            const comment = document.getElementById("comment").value;
+            if (username && comment) {
+                alert(`Comment posted by ${username}: ${comment}`);
             } else {
-                alert("Please fill in both fields.");
+                alert("Please fill in both fields!");
             }
         }
     </script>
@@ -194,7 +168,7 @@
 <body>
 <header>
     Kid News Daily 📰
-    <div id="clock"></div>
+    <div id="clock" class="clock"></div>
 </header>
 
 <div id="breaking-news">
@@ -204,3 +178,54 @@
 <nav>
     <a href="#">Home</a>
     <a href="#">Fun Facts</a>
+    <a href="#">Science</a>
+    <a href="#">Sports</a>
+    <a href="#">Good News</a>
+</nav>
+
+<div class="container">
+    <div class="content">
+        <h1>Exciting News Just for Kids!</h1>
+        <div class="article">
+            <h2>🌍 A New Dinosaur Discovered!</h2>
+            <p>Scientists have found fossils of a never-before-seen dinosaur species!</p>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3>🌟 Choose Your News Topics</h3>
+        <form>
+            <input type="checkbox" name="news-topic" value="Dinosaurs"> Dinosaurs 🦖<br>
+            <input type="checkbox" name="news-topic" value="Space"> Space 🚀<br>
+            <button type="button" onclick="personalizeNews()">Save Preferences</button>
+        </form>
+
+        <div class="poll">
+            <h3>📊 Poll: Best Science Topic?</h3>
+            <button id="voteA" onclick="vote('Dinosaurs')">Dinosaurs</button>
+            <button id="voteB" onclick="vote('Space')">Space</button>
+        </div>
+
+        <div class="leaderboard">
+            <h3>🏆 Leaderboard</h3>
+            <ul>
+                <li>Alice - 500 Points</li>
+                <li>Bob - 450 Points</li>
+                <li>Charlie - 400 Points</li>
+            </ul>
+        </div>
+
+        <div class="comment-box">
+            <h3>💬 Leave a Comment</h3>
+            <input type="text" id="username" placeholder="Your Name">
+            <textarea id="comment" rows="4" cols="30" placeholder="Write your comment..."></textarea>
+            <button onclick="postComment()">Submit</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    🏆 Kid News Daily - Bringing Fun & Facts Every Day! 🏆
+</footer>
+</body>
+</html>
