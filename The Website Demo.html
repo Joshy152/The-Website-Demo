@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kid News</title>
+    <title>Kid News Daily</title>
     <style>
         body {
             font-family: 'Comic Sans MS', Arial, sans-serif;
@@ -78,24 +78,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .comment-box {
-            margin-top: 20px;
-        }
-
-        .poll button:disabled {
-            background-color: grey;
-        }
-
-        .leaderboard ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .leaderboard li {
-            padding: 5px;
-            background-color: white;
-            margin: 5px 0;
-            border-radius: 5px;
+        .article {
+            margin-bottom: 20px;
         }
 
         footer {
@@ -108,7 +92,6 @@
             margin-top: 20px;
         }
 
-        /* Additional Styles */
         .clock {
             font-size: 1.2em;
             margin-top: 10px;
@@ -128,42 +111,6 @@
         }
 
     </style>
-    <script>
-        function personalizeNews() {
-            let topics = document.querySelectorAll('input[name="news-topic"]:checked');
-            let selectedTopics = [];
-            topics.forEach(topic => selectedTopics.push(topic.value));
-            alert("Your news feed will show: " + selectedTopics.join(", "));
-        }
-
-        function showTime() {
-            let timeElement = document.getElementById("clock");
-            let now = new Date();
-            timeElement.innerHTML = now.toLocaleTimeString();
-        }
-        setInterval(showTime, 1000);
-
-        function vote(option) {
-            if (localStorage.getItem("hasVoted")) {
-                alert("You have already voted!");
-                return;
-            }
-            alert("You voted for: " + option);
-            localStorage.setItem("hasVoted", true);
-            document.getElementById("voteA").disabled = true;
-            document.getElementById("voteB").disabled = true;
-        }
-
-        function postComment() {
-            const username = document.getElementById("username").value;
-            const comment = document.getElementById("comment").value;
-            if (username && comment) {
-                alert(`Comment posted by ${username}: ${comment}`);
-            } else {
-                alert("Please fill in both fields!");
-            }
-        }
-    </script>
 </head>
 <body>
 <header>
@@ -172,7 +119,7 @@
 </header>
 
 <div id="breaking-news">
-    <span>🚨 Breaking News: A new dinosaur species discovered! | 🚀 A kid's experiment sent to space! | 🏆 Young athlete wins gold medal!</span>
+    <span>🚨 Breaking News: Scientists discover a new dinosaur! | 🏆 10-year-old wins a national art contest! | 🚀 NASA's rover finds signs of ancient water on Mars!</span>
 </div>
 
 <nav>
@@ -186,10 +133,42 @@
 <div class="container">
     <div class="content">
         <h1>Exciting News Just for Kids!</h1>
+
         <div class="article">
             <h2>🌍 A New Dinosaur Discovered!</h2>
-            <p>Scientists have found fossils of a never-before-seen dinosaur species!</p>
+            <p>Scientists in Argentina have discovered fossils of a never-before-seen dinosaur species that roamed the Earth over 80 million years ago! The new species, named *Llukalkan Aliocranianus*, was a meat-eating dinosaur that could have grown up to 7 meters long and is believed to have had a powerful bite.</p>
+            <p>Researchers were able to identify this species based on the remains of its skull, which shows unique features not seen in other dinosaur species. The new dinosaur was discovered in Patagonia, Argentina, where many important dinosaur fossils have been found.</p>
+            <p>This exciting discovery helps scientists learn more about how dinosaurs evolved and what life was like in prehistoric times. Imagine one day being able to see these incredible creatures in a museum!</p>
         </div>
+
+        <div class="article">
+            <h2>🚀 NASA's Rover Finds Ancient Water on Mars!</h2>
+            <p>NASA's Perseverance rover has just discovered minerals on Mars that suggest the planet had liquid water billions of years ago. Scientists believe that a large lake may have existed in the Jezero Crater, where Perseverance is currently exploring.</p>
+            <p>These minerals, known as carbonates, form in the presence of water. This discovery is significant because it means that the environment on Mars might have once been capable of supporting life. Could life have existed on Mars in the distant past?</p>
+            <p>NASA's rover will continue to collect more data to answer this important question. This mission could bring us closer to understanding if humans could one day live on Mars! What do you think? Would you like to visit Mars someday?</p>
+        </div>
+
+        <div class="article">
+            <h2>🏆 10-Year-Old Wins National Art Contest!</h2>
+            <p>Amazing news from the world of art! 10-year-old Emily Parker has just won the national art contest for kids with her beautiful drawing of a sunset over a mountain range. The theme of the contest was "Nature's Beauty," and Emily’s artwork was chosen from thousands of entries!</p>
+            <p>Her drawing is now displayed at a special exhibit at the local museum, and Emily has received a scholarship to attend a summer art camp. When asked how she felt, Emily said, "I’m really proud, and I hope my art inspires other kids to follow their dreams!"</p>
+            <p>Emily's accomplishment is a great reminder that with creativity and passion, kids can achieve amazing things. Who knows, maybe one day we'll see Emily's art in galleries around the world!</p>
+        </div>
+
+        <div class="article">
+            <h2>🎮 The Future of Video Games: Virtual Reality</h2>
+            <p>Video games are always evolving, and one of the biggest changes on the horizon is the rise of virtual reality (VR). VR is a technology that lets players enter an immersive world, where they can interact with the game environment as if they were actually inside it.</p>
+            <p>Many game developers are now creating VR games that allow players to explore new worlds, solve puzzles, and even interact with other players in real-time. Some of the most popular VR games are set in magical worlds, where players can cast spells, fight dragons, and explore fantasy landscapes.</p>
+            <p>With the improvements in VR technology, the future of gaming is looking more exciting than ever. Could VR become the next big thing for kids everywhere? It’s definitely something to watch!</p>
+        </div>
+
+        <div class="article">
+            <h2>🐾 New Animal Species Discovered in the Amazon!</h2>
+            <p>In a thrilling discovery, scientists have identified several new animal species in the Amazon rainforest. These include a type of frog with glowing skin, and a colorful bird known for its brilliant red feathers!</p>
+            <p>The Amazon is a special place because it’s home to so many different creatures, and new species are still being discovered! The glowing frog has a unique ability to light up in the dark, which helps it attract mates and protect itself from predators.</p>
+            <p>These discoveries are not only exciting, but they also remind us how important it is to protect the rainforest and the incredible animals that live there. We may still have much to learn from the natural world!</p>
+        </div>
+
     </div>
 
     <div class="sidebar">
@@ -197,6 +176,9 @@
         <form>
             <input type="checkbox" name="news-topic" value="Dinosaurs"> Dinosaurs 🦖<br>
             <input type="checkbox" name="news-topic" value="Space"> Space 🚀<br>
+            <input type="checkbox" name="news-topic" value="Art"> Art 🎨<br>
+            <input type="checkbox" name="news-topic" value="Games"> Video Games 🎮<br>
+            <input type="checkbox" name="news-topic" value="Animals"> Animals 🐾<br>
             <button type="button" onclick="personalizeNews()">Save Preferences</button>
         </form>
 
@@ -204,6 +186,7 @@
             <h3>📊 Poll: Best Science Topic?</h3>
             <button id="voteA" onclick="vote('Dinosaurs')">Dinosaurs</button>
             <button id="voteB" onclick="vote('Space')">Space</button>
+            <button id="voteC" onclick="vote('Art')">Art</button>
         </div>
 
         <div class="leaderboard">
@@ -218,14 +201,48 @@
         <div class="comment-box">
             <h3>💬 Leave a Comment</h3>
             <input type="text" id="username" placeholder="Your Name">
-            <textarea id="comment" rows="4" cols="30" placeholder="Write your comment..."></textarea>
-            <button onclick="postComment()">Submit</button>
+            <textarea id="comment" rows="4" cols="30"></textarea>
+            <br>
+            <button type="button" onclick="postComment()">Submit</button>
         </div>
     </div>
 </div>
 
 <footer>
-    🏆 Kid News Daily - Bringing Fun & Facts Every Day! 🏆
+    🏆 Kid News Daily - Bringing Fun & Facts to Kids Everywhere
 </footer>
+
+<script>
+    function updateClock() {
+        const clock = document.getElementById('clock');
+        const currentTime = new Date();
+        clock.innerText = currentTime.toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    
+    function personalizeNews() {
+        alert("Your news preferences have been saved!");
+    }
+
+    function vote(topic) {
+        alert(`You voted for: ${topic}`);
+    }
+
+    function postComment() {
+        const username = document.getElementById('username').value;
+        const comment = document.getElementById('comment').value;
+        if (username && comment) {
+            alert(`Thank you for your comment, ${username}!`);
+        } else {
+            alert("Please fill in both fields before submitting.");
+        }
+    }
+</script>
+
 </body>
 </html>
+
+
+
+ 
+
