@@ -3,246 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kid News Daily</title>
+    <title>Kid News World 🌟</title>
     <style>
         body {
             font-family: 'Comic Sans MS', Arial, sans-serif;
-            background-color: #fffbcc;
+            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
         }
-
         header {
-            background-color: #ff9800;
+            background-color: #ff4500;
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
             font-size: 2.5em;
+            text-transform: uppercase;
+        }
+        nav {
+            background-color: #ffeb3b;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 20px;
+            font-size: 1.5em;
+            text-decoration: none;
+            color: #333;
             font-weight: bold;
         }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .main-content {
+            flex: 3;
+            padding-right: 20px;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #ff4500;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
 
+        /* Breaking News Ticker */
         #breaking-news {
-            background: red;
+            background-color: #e60000;
             color: white;
             padding: 10px;
             text-align: center;
             font-size: 1.2em;
             font-weight: bold;
-            overflow: hidden;
             white-space: nowrap;
+            overflow: hidden;
             position: relative;
         }
-
         #breaking-news span {
             display: inline-block;
-            position: relative;
             animation: marquee 10s linear infinite;
         }
-
         @keyframes marquee {
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
         }
 
-        nav {
-            text-align: center;
-            background-color: #ffcc00;
-            padding: 10px 0;
-        }
-
-        nav a {
-            color: #333;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.4em;
-            font-weight: bold;
-        }
-
-        .container {
-            display: flex;
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .content {
-            flex: 3;
-            padding-right: 20px;
-        }
-
-        .sidebar {
-            flex: 1;
-            background-color: #fff8b3;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .article {
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background-color: #ff9800;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 1.2em;
-            position: relative;
+        /* Interactive Section Styling */
+        .poll, .quiz, .comment-section, .games, .weather, .interactive-content, .newsletter {
             margin-top: 20px;
-        }
-
-        .clock {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        .poll button {
-            background-color: #ffcc00;
-            border: none;
-            padding: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin: 10px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .poll button:disabled {
-            background-color: #ccc;
+            background-color: gray;
         }
 
+        /* Weather Section */
+        .weather {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .weather span {
+            font-size: 1.5em;
+        }
+
+        /* Poll Section */
+        .poll button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .poll button:hover {
+            background-color: #45a049;
+        }
+
+        /* Quiz Section */
+        .quiz button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .quiz button:hover {
+            background-color: #45a049;
+        }
+
+        /* Comment Section */
+        .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        /* Newsletter Section */
+        .newsletter input[type="email"] {
+            padding: 10px;
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .newsletter button:hover {
+            background-color: #e03e00;
+        }
+
+        /* Games Section */
+        .games button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .games button:hover {
+            background-color: #45a049;
+        }
+
+        .game-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* More Info Section */
+        .more-info {
+            font-size: 1.2em;
+            background-color: #ffeb3b;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .more-info button {
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .more-info button:hover {
+            background-color: #0d8bf2;
+        }
     </style>
+    <script>
+        // Dynamic Time
+        function showTime() {
+            let timeElement = document.getElementById("clock");
+            let now = new Date();
+            timeElement.innerHTML = now.toLocaleTimeString();
+        }
+        setInterval(showTime, 1000);
+
+        // Personalized Content
+        function personalizeNews() {
+            let topics = document.querySelectorAll('input[name="news-topic"]:checked');
+            let selectedTopics = [];
+            topics.forEach(topic => selectedTopics.push(topic.value));
+            alert("Your news feed will show: " + selectedTopics.join(", "));
+        }
+
+        // Poll Voting
+        function vote(option) {
+            if (localStorage.getItem("hasVoted")) {
+                alert("You have already voted!");
+                return;
+            }
+            alert("You voted for: " + option);
+            localStorage.setItem("hasVoted", true);
+            document.getElementById("voteA").disabled = true;
+            document.getElementById("voteB").disabled = true;
+        }
+
+        // Posting Comments
+        function postComment() {
+            const username = document.getElementById("username").value;
+            const comment = document.getElementById("comment").value;
+            if (username && comment) {
+                alert(`Comment posted by ${username}: ${comment}`);
+            } else {
+                alert("Please fill in both fields!");
+            }
+        }
+
+        // Fun Weather Section
+        function updateWeatherInfo() {
+            document.getElementById("weather-info").innerHTML = "☀️ Sunny, 72°F";
+        }
+
+        // Fun Games Section
+        function showGame() {
+            alert("Let's play a fun memory game!");
+        }
+
+        // Quiz Section
+        function startQuiz() {
+            alert("Welcome to the fun quiz!");
+        }
+
+        // Random Fun Fact Generator
+        function showFunFact() {
+            const facts = [
+                "Did you know? Honey never spoils!",
+                "Octopuses have three hearts!",
+                "A day on Venus is longer than a year on Venus!",
+                "There are more stars in the universe than grains of sand on all the Earth's beaches!"
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            alert(randomFact);
+        }
+
+        // Newsletter Subscription
+        function subscribeToNewsletter() {
+            const email = document.getElementById("email").value;
+            if (email) {
+                alert(`Thank you for subscribing with the email: ${email}`);
+                document.getElementById("email").value = ""; // Clear input after submission
+            } else {
+                alert("Please enter a valid email address!");
+            }
+        }
+
+        // News and Events Section
+        function displayBreakingNews() {
+            const news = [
+                "🚨 A new dinosaur species discovered in Argentina!",
+                "🚀 A young scientist has built a robot that can help clean oceans!",
+                "⚽ The local kid's soccer team won the regional championship!"
+            ];
+            const newsItem = news[Math.floor(Math.random() * news.length)];
+            document.getElementById("breaking-news").innerHTML = newsItem;
+        }
+
+        setInterval(displayBreakingNews, 5000); // Updates every 5 seconds
+
+        // User Profile Authentication
+        function userLogin() {
+            const username = prompt("Enter your username:");
+            if (username) {
+                localStorage.setItem("username", username);
+                alert("Welcome, " + username + "!");
+            }
+        }
+
+        // Personalized Quizzes
+        function personalizedQuiz() {
+            const username = localStorage.getItem("username");
+            if (!username) {
+                alert("Please log in to take personalized quizzes!");
+            } else {
+                alert("Welcome, " + username + "! Let's start your quiz!");
+           
+            }
+        }
+
+        // Fun Games
+        function showGames() {
+            const games = ["Memory Game", "Trivia Quiz", "Pictionary"];
+            const game = games[Math.floor(Math.random() * games.length)];
+            alert("Let's play " + game + "!");
+        }
+    </script>
 </head>
 <body>
-<header>
-    Kid News Daily 📰
-    <div id="clock" class="clock"></div>
-</header>
+    <header>
+        Kid News World 🌟
+    </header>
 
-<div id="breaking-news">
-    <span>🚨 Breaking News: Scientists discover a new dinosaur! | 🏆 10-year-old wins a national art contest! | 🚀 NASA's rover finds signs of ancient water on Mars!</span>
-</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">Games</a>
+        <a href="#">Quizzes</a>
+        <a href="#">Weather</a>
+        <a href="#">More</a>
+    </nav>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Fun Facts</a>
-    <a href="#">Science</a>
-    <a href="#">Sports</a>
-    <a href="#">Good News</a>
-</nav>
-
-<div class="container">
-    <div class="content">
-        <h1>Exciting News Just for Kids!</h1>
-
-        <div class="article">
-            <h2>🌍 A New Dinosaur Discovered!</h2>
-            <p>Scientists in Argentina have discovered fossils of a never-before-seen dinosaur species that roamed the Earth over 80 million years ago! The new species, named *Llukalkan Aliocranianus*, was a meat-eating dinosaur that could have grown up to 7 meters long and is believed to have had a powerful bite.</p>
-            <p>Researchers were able to identify this species based on the remains of its skull, which shows unique features not seen in other dinosaur species. The new dinosaur was discovered in Patagonia, Argentina, where many important dinosaur fossils have been found.</p>
-            <p>This exciting discovery helps scientists learn more about how dinosaurs evolved and what life was like in prehistoric times. Imagine one day being able to see these incredible creatures in a museum!</p>
-        </div>
-
-        <div class="article">
-            <h2>🚀 NASA's Rover Finds Ancient Water on Mars!</h2>
-            <p>NASA's Perseverance rover has just discovered minerals on Mars that suggest the planet had liquid water billions of years ago. Scientists believe that a large lake may have existed in the Jezero Crater, where Perseverance is currently exploring.</p>
-            <p>These minerals, known as carbonates, form in the presence of water. This discovery is significant because it means that the environment on Mars might have once been capable of supporting life. Could life have existed on Mars in the distant past?</p>
-            <p>NASA's rover will continue to collect more data to answer this important question. This mission could bring us closer to understanding if humans could one day live on Mars! What do you think? Would you like to visit Mars someday?</p>
-        </div>
-
-        <div class="article">
-            <h2>🏆 10-Year-Old Wins National Art Contest!</h2>
-            <p>Amazing news from the world of art! 10-year-old Emily Parker has just won the national art contest for kids with her beautiful drawing of a sunset over a mountain range. The theme of the contest was "Nature's Beauty," and Emily’s artwork was chosen from thousands of entries!</p>
-            <p>Her drawing is now displayed at a special exhibit at the local museum, and Emily has received a scholarship to attend a summer art camp. When asked how she felt, Emily said, "I’m really proud, and I hope my art inspires other kids to follow their dreams!"</p>
-            <p>Emily's accomplishment is a great reminder that with creativity and passion, kids can achieve amazing things. Who knows, maybe one day we'll see Emily's art in galleries around the world!</p>
-        </div>
-
-        <div class="article">
-            <h2>🎮 The Future of Video Games: Virtual Reality</h2>
-            <p>Video games are always evolving, and one of the biggest changes on the horizon is the rise of virtual reality (VR). VR is a technology that lets players enter an immersive world, where they can interact with the game environment as if they were actually inside it.</p>
-            <p>Many game developers are now creating VR games that allow players to explore new worlds, solve puzzles, and even interact with other players in real-time. Some of the most popular VR games are set in magical worlds, where players can cast spells, fight dragons, and explore fantasy landscapes.</p>
-            <p>With the improvements in VR technology, the future of gaming is looking more exciting than ever. Could VR become the next big thing for kids everywhere? It’s definitely something to watch!</p>
-        </div>
-
-        <div class="article">
-            <h2>🐾 New Animal Species Discovered in the Amazon!</h2>
-            <p>In a thrilling discovery, scientists have identified several new animal species in the Amazon rainforest. These include a type of frog with glowing skin, and a colorful bird known for its brilliant red feathers!</p>
-            <p>The Amazon is a special place because it’s home to so many different creatures, and new species are still being discovered! The glowing frog has a unique ability to light up in the dark, which helps it attract mates and protect itself from predators.</p>
-            <p>These discoveries are not only exciting, but they also remind us how important it is to protect the rainforest and the incredible animals that live there. We may still have much to learn from the natural world!</p>
-        </div>
-
+    <div id="breaking-news">
+        <span>🚨 A new dinosaur species discovered in Argentina! 🚨</span>
     </div>
 
-    <div class="sidebar">
-        <h3>🌟 Choose Your News Topics</h3>
-        <form>
-            <input type="checkbox" name="news-topic" value="Dinosaurs"> Dinosaurs 🦖<br>
-            <input type="checkbox" name="news-topic" value="Space"> Space 🚀<br>
-            <input type="checkbox" name="news-topic" value="Art"> Art 🎨<br>
-            <input type="checkbox" name="news-topic" value="Games"> Video Games 🎮<br>
-            <input type="checkbox" name="news-topic" value="Animals"> Animals 🐾<br>
-            <button type="button" onclick="personalizeNews()">Save Preferences</button>
-        </form>
+    <div class="container">
+        <div class="main-content">
+            <div class="interactive-content">
+                <h2>Choose Your Interests</h2>
+                <form>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Sports"> Sports
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Science"> Science
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Technology"> Technology
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Art"> Art
+                    </label>
+                    <button type="button" onclick="personalizeNews()">Update News Feed</button>
+                </form>
+            </div>
 
-        <div class="poll">
-            <h3>📊 Poll: Best Science Topic?</h3>
-            <button id="voteA" onclick="vote('Dinosaurs')">Dinosaurs</button>
-            <button id="voteB" onclick="vote('Space')">Space</button>
-            <button id="voteC" onclick="vote('Art')">Art</button>
+            <div class="poll">
+                <h2>What's your favorite color?</h2>
+                <button id="voteA" onclick="vote('Red')">Red</button>
+                <button id="voteB" onclick="vote('Blue')">Blue</button>
+            </div>
+
+            <div class="quiz">
+                <h2>Take a Fun Quiz!</h2>
+                <button onclick="startQuiz()">Start Quiz</button>
+            </div>
+
+            <div class="comment-section">
+                <h2>Leave a Comment</h2>
+                <input type="text" id="username" placeholder="Your Name">
+                <textarea id="comment" placeholder="Your comment here..."></textarea>
+                <button onclick="postComment()">Post Comment</button>
+            </div>
+
+            <div class="newsletter">
+                <h2>Subscribe to our Newsletter</h2>
+                <input type="email" id="email" placeholder="Your email address">
+                <button onclick="subscribeToNewsletter()">Subscribe</button>
+            </div>
+
         </div>
 
-        <div class="leaderboard">
-            <h3>🏆 Leaderboard</h3>
-            <ul>
-                <li>Alice - 500 Points</li>
-                <li>Bob - 450 Points</li>
-                <li>Charlie - 400 Points</li>
-            </ul>
-        </div>
-
-        <div class="comment-box">
-            <h3>💬 Leave a Comment</h3>
-            <input type="text" id="username" placeholder="Your Name">
-            <textarea id="comment" rows="4" cols="30"></textarea>
-            <br>
-            <button type="button" onclick="postComment()">Submit</button>
+        <div class="sidebar">
+            <div class="weather">
+                <h3>Weather Today</h3>
+                <span id="weather-info" onclick="updateWeatherInfo()">Click to view weather info</span>
+            </div>
+            <div class="games">
+                <h3>Play a Game!</h3>
+                <button onclick="showGames()">Choose Game</button>
+            </div>
         </div>
     </div>
-</div>
 
-<footer>
-    🏆 Kid News Daily - Bringing Fun & Facts to Kids Everywhere
-</footer>
-
-<script>
-    function updateClock() {
-        const clock = document.getElementById('clock');
-        const currentTime = new Date();
-        clock.innerText = currentTime.toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    
-    function personalizeNews() {
-        alert("Your news preferences have been saved!");
-    }
-
-    function vote(topic) {
-        alert(`You voted for: ${topic}`);
-    }
-
-    function postComment() {
-        const username = document.getElementById('username').value;
-        const comment = document.getElementById('comment').value;
-        if (username && comment) {
-            alert(`Thank you for your comment, ${username}!`);
-        } else {
-            alert("Please fill in both fields before submitting.");
-        }
-    }
-</script>
-
+    <footer>
+        <p>&copy; 2025 Kid News World. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
-
-
-
- 
-
