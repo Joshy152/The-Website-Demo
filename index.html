@@ -3,117 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Website</title>
+    <title>Kid News World 🌟</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
         }
-
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            background-color: #ff4500;
+            color: white;
             text-align: center;
+            padding: 20px;
+            font-size: 2.5em;
+            text-transform: uppercase;
         }
-
         nav {
+            background-color: #ffeb3b;
+            padding: 15px 0;
             text-align: center;
-            background-color: #444;
-            padding: 10px 0;
         }
-
         nav a {
-            color: #fff;
             margin: 0 20px;
+            font-size: 1.5em;
             text-decoration: none;
-            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
         }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .content {
-            padding: 20px;
-            max-width: 900px;
+        .container {
+            display: flex;
+            max-width: 1200px;
             margin: auto;
-        }
-
-        h1 {
-            font-size: 3em;
-            font-weight: 400;
-            text-align: center;
-            margin-top: 5vh;
-            line-height: 1.2;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .article {
-            background-color: #fff;
             padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .article h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
+        .main-content {
+            flex: 3;
+            padding-right: 20px;
         }
-
-        .article p {
-            font-size: 1.2em;
-            line-height: 1.6;
+        .sidebar {
+            flex: 1;
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 10px;
         }
-
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: #ff4500;
+            color: white;
             text-align: center;
-            padding: 10px 0;
-            position: fixed;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Breaking News Ticker */
+        #breaking-news {
+            background-color: #e60000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
+        #breaking-news span {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Interactive Section Styling */
+        .poll, .quiz, .comment-section, .games, .weather, .interactive-content, .newsletter {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .poll button:disabled {
+            background-color: gray;
+        }
+
+        /* Weather Section */
+        .weather {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .weather span {
+            font-size: 1.5em;
+        }
+
+        /* Poll Section */
+        .poll button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .poll button:hover {
+            background-color: #45a049;
+        }
+
+        /* Quiz Section */
+        .quiz button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .quiz button:hover {
+            background-color: #45a049;
+        }
+
+        /* Comment Section */
+        .comment-section textarea {
             width: 100%;
-            bottom: 0;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        /* Newsletter Section */
+        .newsletter input[type="email"] {
+            padding: 10px;
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .newsletter button:hover {
+            background-color: #e03e00;
+        }
+
+        /* Games Section */
+        .games button {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .games button:hover {
+            background-color: #45a049;
+        }
+
+        .game-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* More Info Section */
+        .more-info {
+            font-size: 1.2em;
+            background-color: #ffeb3b;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .more-info button {
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .more-info button:hover {
+            background-color: #0d8bf2;
         }
     </style>
+    <script>
+        // Dynamic Time
+        function showTime() {
+            let timeElement = document.getElementById("clock");
+            let now = new Date();
+            timeElement.innerHTML = now.toLocaleTimeString();
+        }
+        setInterval(showTime, 1000);
+
+        // Personalized Content
+        function personalizeNews() {
+            let topics = document.querySelectorAll('input[name="news-topic"]:checked');
+            let selectedTopics = [];
+            topics.forEach(topic => selectedTopics.push(topic.value));
+            alert("Your news feed will show: " + selectedTopics.join(", "));
+        }
+
+        // Poll Voting
+        function vote(option) {
+            if (localStorage.getItem("hasVoted")) {
+                alert("You have already voted!");
+                return;
+            }
+            alert("You voted for: " + option);
+            localStorage.setItem("hasVoted", true);
+            document.getElementById("voteA").disabled = true;
+            document.getElementById("voteB").disabled = true;
+        }
+
+        // Posting Comments
+        function postComment() {
+            const username = document.getElementById("username").value;
+            const comment = document.getElementById("comment").value;
+            if (username && comment) {
+                alert(`Comment posted by ${username}: ${comment}`);
+            } else {
+                alert("Please fill in both fields!");
+            }
+        }
+
+        // Fun Weather Section
+        function updateWeatherInfo() {
+            document.getElementById("weather-info").innerHTML = "☀️ Sunny, 72°F";
+        }
+
+        // Fun Games Section
+        function showGame() {
+            alert("Let's play a fun memory game!");
+        }
+
+        // Quiz Section
+        function startQuiz() {
+            alert("Welcome to the fun quiz!");
+        }
+
+        // Random Fun Fact Generator
+        function showFunFact() {
+            const facts = [
+                "Did you know? Honey never spoils!",
+                "Octopuses have three hearts!",
+                "A day on Venus is longer than a year on Venus!",
+                "There are more stars in the universe than grains of sand on all the Earth's beaches!"
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            alert(randomFact);
+        }
+
+        // Newsletter Subscription
+        function subscribeToNewsletter() {
+            const email = document.getElementById("email").value;
+            if (email) {
+                alert(`Thank you for subscribing with the email: ${email}`);
+                document.getElementById("email").value = ""; // Clear input after submission
+            } else {
+                alert("Please enter a valid email address!");
+            }
+        }
+
+        // News and Events Section
+        function displayBreakingNews() {
+            const news = [
+                "🚨 A new dinosaur species discovered in Argentina!",
+                "🚀 A young scientist has built a robot that can help clean oceans!",
+                "⚽ The local kid's soccer team won the regional championship!"
+            ];
+            const newsItem = news[Math.floor(Math.random() * news.length)];
+            document.getElementById("breaking-news").innerHTML = newsItem;
+        }
+
+        setInterval(displayBreakingNews, 5000); // Updates every 5 seconds
+
+        // User Profile Authentication
+        function userLogin() {
+            const username = prompt("Enter your username:");
+            if (username) {
+                localStorage.setItem("username", username);
+                alert("Welcome, " + username + "!");
+            }
+        }
+
+        // Personalized Quizzes
+        function personalizedQuiz() {
+            const username = localStorage.getItem("username");
+            if (!username) {
+                alert("Please log in to take personalized quizzes!");
+            } else {
+                alert("Welcome, " + username + "! Let's start your quiz!");
+           
+            }
+        }
+
+        // Fun Games
+        function showGames() {
+            const games = ["Memory Game", "Trivia Quiz", "Pictionary"];
+            const game = games[Math.floor(Math.random() * games.length)];
+            alert("Let's play " + game + "!");
+        }
+    </script>
 </head>
 <body>
+    <header>
+        Kid News World 🌟
+    </header>
 
-<header>
-    <h1>News Today</h1>
-</header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">Games</a>
+        <a href="#">Quizzes</a>
+        <a href="#">Weather</a>
+        <a href="#">More</a>
+    </nav>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">World</a>
-    <a href="#">Politics</a>
-    <a href="#">Sports</a>
-    <a href="#">Entertainment</a>
-</nav>
-
-<div class="content">
-    <h1>Breaking News: Major Event Happens</h1>
-
-    <div class="article">
-        <h2>Megan Markles Bold Comeback: Stirring Up New Adventures in 2025</h2>
-        <p>Meghan Markle is making a big return in 2025 with a new TV show that shares fun and practical ideas for everyday living. In the show, she teaches easy recipes that make cooking fun, shows simple gardening tips to help you create your own little green space, and shares creative ways to host memorable family get-togethers.</p>
-        <p>Along with the show, Meghan is launching her new lifestyle brand, American Riviera Orchard. This brand offers clever advice on DIY projects and fresh ideas to brighten up daily routines. Working with her team, Meghan hopes to inspire everyone to explore new ideas and add a splash of creativity to home life. Get ready for a year full of exciting, practical inspiration in 2025 with Meghan Markle leading the way!</p>
+    <div id="breaking-news">
+        <span>🚨 A new dinosaur species discovered in Argentina! 🚨</span>
     </div>
 
-    <div class="article">
-        <h2>Another Headline</h2>
-        <p>This is a second article block with its own content. The layout can be expanded to show multiple articles, images, or even advertisements depending on the design requirements.</p>
+    <div class="container">
+        <div class="main-content">
+            <div class="interactive-content">
+                <h2>Choose Your Interests</h2>
+                <form>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Sports"> Sports
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Science"> Science
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Technology"> Technology
+                    </label>
+                    <label>
+                        <input type="checkbox" name="news-topic" value="Art"> Art
+                    </label>
+                    <button type="button" onclick="personalizeNews()">Update News Feed</button>
+                </form>
+            </div>
+
+            <div class="poll">
+                <h2>What's your favorite color?</h2>
+                <button id="voteA" onclick="vote('Red')">Red</button>
+                <button id="voteB" onclick="vote('Blue')">Blue</button>
+            </div>
+
+            <div class="quiz">
+                <h2>Take a Fun Quiz!</h2>
+                <button onclick="startQuiz()">Start Quiz</button>
+            </div>
+
+            <div class="comment-section">
+                <h2>Leave a Comment</h2>
+                <input type="text" id="username" placeholder="Your Name">
+                <textarea id="comment" placeholder="Your comment here..."></textarea>
+                <button onclick="postComment()">Post Comment</button>
+            </div>
+
+            <div class="newsletter">
+                <h2>Subscribe to our Newsletter</h2>
+                <input type="email" id="email" placeholder="Your email address">
+                <button onclick="subscribeToNewsletter()">Subscribe</button>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="weather">
+                <h3>Weather Today</h3>
+                <span id="weather-info" onclick="updateWeatherInfo()">Click to view weather info</span>
+            </div>
+            <div class="games">
+                <h3>Play a Game!</h3>
+                <button onclick="showGames()">Choose Game</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2025 News Today. All Rights Reserved.</p>
-</footer>
-
+    <footer>
+        <p>&copy; 2025 Kid News World. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
