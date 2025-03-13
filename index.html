@@ -55,267 +55,76 @@
             margin-top: 20px;
         }
 
-        /* Breaking News Ticker */
-        #breaking-news {
-            background-color: #e60000;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-        }
-        #breaking-news span {
-            display: inline-block;
-            animation: marquee 10s linear infinite;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* Interactive Section Styling */
-        .poll, .quiz, .comment-section, .games, .weather, .interactive-content, .newsletter {
-            margin-top: 20px;
-            padding: 15px;
+        .news-container {
+            margin-top: 30px;
             background-color: white;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .poll button:disabled {
-            background-color: gray;
-        }
-
-        /* Weather Section */
-        .weather {
-            background-color: #2196F3;
-            color: white;
-            padding: 20px;
+        .news-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
             border-radius: 10px;
-            cursor: pointer;
         }
 
-        .weather span {
+        .news-item h3 {
             font-size: 1.5em;
+            color: #ff4500;
         }
 
-        /* Poll Section */
-        .poll button {
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
+        .news-item p {
             font-size: 1.1em;
-            border-radius: 5px;
-        }
-
-        .poll button:hover {
-            background-color: #45a049;
-        }
-
-        /* Quiz Section */
-        .quiz button {
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            font-size: 1.1em;
-            border-radius: 5px;
-        }
-
-        .quiz button:hover {
-            background-color: #45a049;
-        }
-
-        /* Comment Section */
-        .comment-section textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        /* Newsletter Section */
-        .newsletter input[type="email"] {
-            padding: 10px;
-            width: 60%;
-            margin-right: 10px;
-        }
-
-        .newsletter button {
-            padding: 10px;
-            background-color: #ff4500;
-            color: white;
-            border: none;
-            font-size: 1.1em;
-            border-radius: 5px;
-        }
-
-        .newsletter button:hover {
-            background-color: #e03e00;
-        }
-
-        /* Games Section */
-        .games button {
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            font-size: 1.1em;
-            border-radius: 5px;
-        }
-
-        .games button:hover {
-            background-color: #45a049;
-        }
-
-        .game-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* More Info Section */
-        .more-info {
-            font-size: 1.2em;
-            background-color: #ffeb3b;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-
-        .more-info button {
-            padding: 10px;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-        }
-
-        .more-info button:hover {
-            background-color: #0d8bf2;
+            color: #333;
         }
     </style>
     <script>
-        // Dynamic Time
-        function showTime() {
-            let timeElement = document.getElementById("clock");
-            let now = new Date();
-            timeElement.innerHTML = now.toLocaleTimeString();
-        }
-        setInterval(showTime, 1000);
+        // Fetch and display the news in a kid-friendly way
+        async function fetchNews() {
+            const newsApiKey = "42f820b5d8734059b8c2b36d31b44cfb"; // Replace with your valid NewsAPI key
+            const gptApiKey = "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"; // Replace with your valid OpenAI API key
 
-        // Personalized Content
-        function personalizeNews() {
-            let topics = document.querySelectorAll('input[name="news-topic"]:checked');
-            let selectedTopics = [];
-            topics.forEach(topic => selectedTopics.push(topic.value));
-            alert("Your news feed will show: " + selectedTopics.join(", "));
-        }
+            const newsUrl = `https://newsapi.org/v2/top-headlines?category=general&language=en&apiKey=${newsApiKey}`;
 
-        // Poll Voting
-        function vote(option) {
-            if (localStorage.getItem("hasVoted")) {
-                alert("You have already voted!");
-                return;
-            }
-            alert("You voted for: " + option);
-            localStorage.setItem("hasVoted", true);
-            document.getElementById("voteA").disabled = true;
-            document.getElementById("voteB").disabled = true;
-        }
+            try {
+                let newsResponse = await fetch(newsUrl);
+                let newsData = await newsResponse.json();
+                let articles = newsData.articles.slice(0, 5);  // Limit to 5 articles
 
-        // Posting Comments
-        function postComment() {
-            const username = document.getElementById("username").value;
-            const comment = document.getElementById("comment").value;
-            if (username && comment) {
-                alert(`Comment posted by ${username}: ${comment}`);
-            } else {
-                alert("Please fill in both fields!");
-            }
-        }
+                for (let article of articles) {
+                    let title = article.title;
+                    let content = article.description || "No description available.";
 
-        // Fun Weather Section
-        function updateWeatherInfo() {
-            document.getElementById("weather-info").innerHTML = "☀️ Sunny, 72°F";
-        }
+                    let chatGptResponse = await fetch("https://api.openai.com/v1/completions", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${gptApiKey}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4",
+                            prompt: `Rewrite this news in a fun and simple way for kids:\nTitle: ${title}\nContent: ${content}`,
+                            max_tokens: 200
+                        })
+                    });
 
-        // Fun Games Section
-        function showGame() {
-            alert("Let's play a fun memory game!");
-        }
+                    let gptData = await chatGptResponse.json();
+                    let rewrittenNews = gptData.choices[0].text.trim();
 
-        // Quiz Section
-        function startQuiz() {
-            alert("Welcome to the fun quiz!");
-        }
-
-        // Random Fun Fact Generator
-        function showFunFact() {
-            const facts = [
-                "Did you know? Honey never spoils!",
-                "Octopuses have three hearts!",
-                "A day on Venus is longer than a year on Venus!",
-                "There are more stars in the universe than grains of sand on all the Earth's beaches!"
-            ];
-            const randomFact = facts[Math.floor(Math.random() * facts.length)];
-            alert(randomFact);
-        }
-
-        // Newsletter Subscription
-        function subscribeToNewsletter() {
-            const email = document.getElementById("email").value;
-            if (email) {
-                alert(`Thank you for subscribing with the email: ${email}`);
-                document.getElementById("email").value = ""; // Clear input after submission
-            } else {
-                alert("Please enter a valid email address!");
+                    let newsContainer = document.getElementById("news-container");
+                    let newsItem = document.createElement("div");
+                    newsItem.classList.add("news-item");
+                    newsItem.innerHTML = `<h3>${title}</h3><p>${rewrittenNews}</p>`;
+                    newsContainer.appendChild(newsItem);
+                }
+            } catch (error) {
+                console.error("Error fetching news:", error);
             }
         }
 
-        // News and Events Section
-        function displayBreakingNews() {
-            const news = [
-                "🚨 A new dinosaur species discovered in Argentina!",
-                "🚀 A young scientist has built a robot that can help clean oceans!",
-                "⚽ The local kid's soccer team won the regional championship!"
-            ];
-            const newsItem = news[Math.floor(Math.random() * news.length)];
-            document.getElementById("breaking-news").innerHTML = newsItem;
-        }
-
-        setInterval(displayBreakingNews, 5000); // Updates every 5 seconds
-
-        // User Profile Authentication
-        function userLogin() {
-            const username = prompt("Enter your username:");
-            if (username) {
-                localStorage.setItem("username", username);
-                alert("Welcome, " + username + "!");
-            }
-        }
-
-        // Personalized Quizzes
-        function personalizedQuiz() {
-            const username = localStorage.getItem("username");
-            if (!username) {
-                alert("Please log in to take personalized quizzes!");
-            } else {
-                alert("Welcome, " + username + "! Let's start your quiz!");
-           
-            }
-        }
-
-        // Fun Games
-        function showGames() {
-            const games = ["Memory Game", "Trivia Quiz", "Pictionary"];
-            const game = games[Math.floor(Math.random() * games.length)];
-            alert("Let's play " + game + "!");
-        }
+        window.onload = fetchNews;  // Trigger news fetch on page load
     </script>
 </head>
 <body>
@@ -332,65 +141,18 @@
         <a href="#">More</a>
     </nav>
 
-    <div id="breaking-news">
-        <span>🚨 A new dinosaur species discovered in Argentina! 🚨</span>
-    </div>
-
     <div class="container">
         <div class="main-content">
-            <div class="interactive-content">
-                <h2>Choose Your Interests</h2>
-                <form>
-                    <label>
-                        <input type="checkbox" name="news-topic" value="Sports"> Sports
-                    </label>
-                    <label>
-                        <input type="checkbox" name="news-topic" value="Science"> Science
-                    </label>
-                    <label>
-                        <input type="checkbox" name="news-topic" value="Technology"> Technology
-                    </label>
-                    <label>
-                        <input type="checkbox" name="news-topic" value="Art"> Art
-                    </label>
-                    <button type="button" onclick="personalizeNews()">Update News Feed</button>
-                </form>
+            <!-- News Section -->
+            <div id="news-container" class="news-container">
+                <!-- News will be inserted here by the fetchNews() function -->
             </div>
-
-            <div class="poll">
-                <h2>What's your favorite color?</h2>
-                <button id="voteA" onclick="vote('Red')">Red</button>
-                <button id="voteB" onclick="vote('Blue')">Blue</button>
-            </div>
-
-            <div class="quiz">
-                <h2>Take a Fun Quiz!</h2>
-                <button onclick="startQuiz()">Start Quiz</button>
-            </div>
-
-            <div class="comment-section">
-                <h2>Leave a Comment</h2>
-                <input type="text" id="username" placeholder="Your Name">
-                <textarea id="comment" placeholder="Your comment here..."></textarea>
-                <button onclick="postComment()">Post Comment</button>
-            </div>
-
-            <div class="newsletter">
-                <h2>Subscribe to our Newsletter</h2>
-                <input type="email" id="email" placeholder="Your email address">
-                <button onclick="subscribeToNewsletter()">Subscribe</button>
-            </div>
-
         </div>
 
         <div class="sidebar">
             <div class="weather">
                 <h3>Weather Today</h3>
-                <span id="weather-info" onclick="updateWeatherInfo()">Click to view weather info</span>
-            </div>
-            <div class="games">
-                <h3>Play a Game!</h3>
-                <button onclick="showGames()">Choose Game</button>
+                <span>Sunny, 72°F</span>
             </div>
         </div>
     </div>
