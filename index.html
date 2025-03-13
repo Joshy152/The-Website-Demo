@@ -78,9 +78,9 @@
 
         /* Interactive Section Styling */
         .poll, .quiz, .comment-section, .games, .weather, .interactive-content, .newsletter {
-            margin-top: 300px;
+            margin-top: 20px;
             padding: 15px;
-            background-color: white;
+            background-color: rgb(255, 255, 255);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -316,50 +316,6 @@
             const game = games[Math.floor(Math.random() * games.length)];
             alert("Let's play " + game + "!");
         }
-    </script>
-    <script>
-        async function fetchNews() {
-            const newsApiKey = "42f820b5d8734059b8c2b36d31b44cfb"; // Replace with a valid NewsAPI key
-            const gptApiKey = "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"; // Replace with a valid OpenAI API key
-            const newsUrl = `https://newsapi.org/v2/top-headlines?category=general&language=en&apiKey=${newsApiKey}`;
-
-            try {
-                let newsResponse = await fetch(newsUrl);
-                let newsData = await newsResponse.json();
-                let articles = newsData.articles.slice(0, 5);
-
-                for (let article of articles) {
-                    let title = article.title;
-                    let content = article.description || "No description available.";
-
-                    let chatGptResponse = await fetch("https://api.openai.com/v1/completions", {
-                        method: "POST",
-                        headers: {
-                            "Authorization": `Bearer ${gptApiKey}`,
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            model: "gpt-4",
-                            prompt: `Rewrite this news in a fun and simple way for kids:\nTitle: ${title}\nContent: ${content}`,
-                            max_tokens: 200
-                        })
-                    });
-
-                    let gptData = await chatGptResponse.json();
-                    let rewrittenNews = gptData.choices[0].text.trim();
-
-                    let newsContainer = document.getElementById("news-container");
-                    let newsItem = document.createElement("div");
-                    newsItem.classList.add("news-item");
-                    newsItem.innerHTML = `<h2>${title}</h2><p>${rewrittenNews}</p>`;
-                    newsContainer.appendChild(newsItem);
-                }
-            } catch (error) {
-                console.error("Error fetching news:", error);
-            }
-        }
-
-        window.onload = fetchNews;
     </script>
 </head>
 <body>
